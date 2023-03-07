@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "994687622769",
+    "project_id": "birthday-calendar-386b5",
+    "storage_bucket": "birthday-calendar-386b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994687622769:android:f96d4f26e85d37e1abc5d0",
+        "android_client_info": {
+          "package_name": "com.example.bday_calendar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994687622769-2ig17vu1mj38vdv4o10vfig2nko8jj65.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoo1LEIBmnldGVsSGtqD1vTo7XDwRck1U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994687622769-2ig17vu1mj38vdv4o10vfig2nko8jj65.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "994687622769-oqh91rfbh5a3r4ehjt50nni4t8h6mb3i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bdayCalendar"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
