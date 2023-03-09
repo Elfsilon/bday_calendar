@@ -1,5 +1,5 @@
 import 'package:bday_calendar/auth/widgets/auth_guard.dart';
-import 'package:bday_calendar/birthdays/data/repositories/birthday_repository.dart';
+import 'package:bday_calendar/birthdays/data/repositories/firestore_repository.dart';
 import 'package:bday_calendar/birthdays/provider/birthdays_provider.dart';
 import 'package:bday_calendar/birthdays/screens/home/home.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -22,7 +22,7 @@ class App extends StatelessWidget {
           providers: [
             ChangeNotifierProvider(
               create: (context) => BirthdaysProvider(
-                repository: FirestoreRepository(
+                repository: BirthdaysRepository(
                   firestore: FirebaseFirestore.instance,
                 ),
               ),
