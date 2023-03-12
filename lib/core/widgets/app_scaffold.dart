@@ -29,6 +29,7 @@ class AppScaffold extends StatelessWidget {
     }
 
     return Scaffold(
+      backgroundColor: const Color(0xFF212121),
       body: SafeArea(
         child: body,
       ),

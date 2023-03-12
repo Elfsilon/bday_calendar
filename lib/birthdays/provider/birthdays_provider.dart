@@ -19,7 +19,6 @@ class BirthdaysProvider with ChangeNotifier {
   List<Birthday> _birthdays;
   List<Birthday> get birthdays => _birthdays;
   set birthdays(List<Birthday> value) {
-    print("SET BIRTHDAYS $value");
     _birthdays = value;
     notifyListeners();
   }
@@ -42,7 +41,6 @@ class BirthdaysProvider with ChangeNotifier {
   List<Birthday> _selectedBirthdays;
   List<Birthday> get selectedBirthdays => _selectedBirthdays;
   set selectedBirthdays(List<Birthday> value) {
-    print("SET SELECTED BIRTHDAYS $value");
     _selectedBirthdays = value;
     notifyListeners();
   }
@@ -67,7 +65,6 @@ extension BirthaysProviderMethods on BirthdaysProvider {
     try {
       birthdaysIsLoading = true;
       final data = await _repository.fetchBirthdaysByMonth(month);
-      print("ByMonth $data");
       birthdays = data;
     } catch (e) {
       birthdaysError = e.toString();
@@ -76,11 +73,10 @@ extension BirthaysProviderMethods on BirthdaysProvider {
     }
   }
 
-  Future<void> getBirthdaysByDay(int day) async {
+  Future<void> getBirthdaysByDay(int day, int month) async {
     try {
       selectedBirthdaysIsLoading = true;
-      final data = await _repository.fetchBirthdaysByDay(day);
-      print("ByDay $data");
+      final data = await _repository.fetchBirthdaysByDay(day, month);
       selectedBirthdays = data;
     } catch (e) {
       selectedBirthdaysError = e.toString();
@@ -104,12 +100,7 @@ extension BirthaysProviderMethods on BirthdaysProvider {
   Future<void> deleteBirthday(Birthday item) async {
     try {
       selectedBirthdaysIsLoading = true;
-      print("[VM] delete 1: ${item.id}");
-      if (item.id == null) {
-        throw Exception("[BirthdaysProvider] Provided item id is null");
-      }
-      print("[VM] delete 2: ${item.id}");
-      await _repository.delete(item.id!);
+      await _repository.delete(item.id);
       await _updateBirthdays(item.day, item.month);
     } catch (e) {
       selectedBirthdaysError = e.toString();
@@ -119,7 +110,7 @@ extension BirthaysProviderMethods on BirthdaysProvider {
   }
 
   Future<void> _updateBirthdays(int day, int month) async {
-    await getBirthdaysByDay(day);
+    await getBirthdaysByDay(day, month);
     await getBirthdaysByMonth(month);
   }
 

@@ -1,5 +1,6 @@
 import 'package:bday_calendar/birthdays/data/models/birthay/birthday.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class BirthdaysRepository {
   const BirthdaysRepository({
@@ -19,10 +20,11 @@ class BirthdaysRepository {
     return data.toList();
   }
 
-  Future<List<Birthday>> fetchBirthdaysByDay(int day) async {
+  Future<List<Birthday>> fetchBirthdaysByDay(int day, int month) async {
     final snapshot = await firestore
         .collection(collection)
         .where("day", isEqualTo: day)
+        .where("month", isEqualTo: month)
         .get();
     final data = snapshot.docs.map((doc) => Birthday.fromJson(doc));
     return data.toList();
